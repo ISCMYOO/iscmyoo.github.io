@@ -24,7 +24,7 @@ h1 {
     font-size: 2rem;
 }
 
-.intro, .interests, .profile, .education, .work-experience, .Program, .Awards, .Paper, .Project, .certificates {
+.intro, .interests, .profile, .education, .work-experience, .program, .awards, .paper, .project, .certificates {
     max-width: 1000px;
     margin: 2rem auto;
     padding: 0 1rem;
