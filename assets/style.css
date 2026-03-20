@@ -1044,10 +1044,12 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
 
 /* Award institution styling: appears under award title, slightly smaller and muted */
 .awards .award-institution {
-    margin-top: 6px;
-    font-size: 0.92rem;
-    color: #64748b; /* muted slate */
-    font-weight: 600;
+    margin-top: 24px !important;
+    display: block;
+    font-size: 0.95rem;
+}
+@media (max-width: 720px) {
+    .papers .award-institution { margin-top: 16px !important; }
 }
 
 /* Slight spacing tweak: bring major-kr and institution closer */
@@ -1258,7 +1260,7 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
 }
 
 /* Paper meta: role + date arranged below description and styled like award date */
-.papers .paper-meta { margin-top: 10px; display:flex; gap:10px; align-items:center; }
+.papers .paper-meta { margin-top: 22px !important; margin-bottom: 14px !important; display:flex; gap:10px; align-items:center; }
 .papers .paper-meta .work-role {
     font-weight: 700;
     color: #ffffff; /* white text for stronger contrast */
@@ -1330,3 +1332,55 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     transform: scale(1.02);
 }
 .work-card-icon:hover { cursor: zoom-in; }
+
+@media (max-width: 720px) {
+    /* Stack layout: icon + text row, then cover below full width */
+    .papers .work-card {
+        grid-template-columns: 56px 1fr;
+        grid-template-rows: auto auto;
+        gap: 12px 12px;
+        align-items: start;
+    }
+    .papers .work-card .work-card-icon { grid-column: 1 / 2; grid-row: 1 / 2; }
+    .papers .work-card .work-card-body { grid-column: 2 / 3; grid-row: 1 / 2; }
+    .papers .work-card .work-card-cover { grid-column: 1 / 3; grid-row: 2 / 3; justify-content: flex-start; }
+    .papers .work-card .paper-cover-img { max-width: 320px; width: 100%; height: auto; }
+
+    /* Make paper-meta wrap so author/date/action don't overflow */
+    .papers .paper-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 10px;
+        align-items: center;
+    }
+
+    /* Make actions smaller and left-aligned under the date if wrapped */
+    .paper-action { margin-left: 0; padding: 6px 8px; font-size: 0.82rem; }
+
+    /* Ensure award-institution (the trophy line) sits after meta and has some spacing */
+    .award-institution { margin-top: 8px; display:block; }
+}
+
+/* Extra smaller screens tweak */
+@media (max-width: 420px) {
+    .papers .work-card { grid-template-columns: 48px 1fr; }
+    .papers .work-card .paper-cover-img { max-width: 100%; }
+    .paper-action { padding: 6px 8px; font-size: 0.8rem; }
+}
+
+/* Ensure .paper-meta children align on the same baseline: make each child an inline-flex, center items, set consistent line-height, vertical-align, and normalize padding if needed to avoid one element sitting higher. */
+.papers .paper-meta > * {
+    display: inline-flex !important;
+    align-items: center !important; /* vertically center content inside each badge */
+    vertical-align: middle !important;
+    line-height: 1 !important;
+}
+/* Ensure date and role have identical vertical padding and font-size so they sit on the same baseline */
+.papers .paper-meta .work-period,
+.papers .paper-meta .work-role {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    font-size: 0.86rem !important;
+}
+/* Slight spacing for actions */
+.papers .paper-meta .paper-action { margin-left: 8px !important; }
