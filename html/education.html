@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학력 - ISCMYOO</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="header">
+    <img src="../assets/image/profile.jpeg" alt="Yoo Sung Hwan Profile" class="profile-img">
+    <h1>유성환 (Yoo Sung Hwan)</h1>
+</header>
+
+<section class="education container">
+    <h2>🎓 학력</h2>
+
+    <!-- School header: show university name and optional logo -->
+    <div class="school-block">
+        <img src="../assets/image/kookmin.jpg" alt="국민대학교 로고" class="school-logo" onerror="this.style.display='none'">
+        <div class="school-name">국민대학교</div>
+    </div>
+
+    <!-- Education cards: Major and Double Major -->
+    <article class="edu-card" aria-labelledby="major-title">
+        <div class="edu-card-body">
+            <h4 id="major-title">주전공 (Major)</h4>
+            <div class="major-en"><strong>Information Security, Cryptography and Mathematics - BS</strong></div>
+            <div class="major-kr muted"><strong>(정보보안암호수학과)</strong></div>
+            <div class="edu-gpa" aria-label="GPA">GPA: 4.11 / 4.5</div>
+        </div>
+        <div class="edu-preview" title="정보보안암호수학과 홈페이지 미리보기">
+            <iframe src="https://cns.kookmin.ac.kr/cns/index.do" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            <a class="edu-site-link" href="https://cns.kookmin.ac.kr/cns/index.do" target="_blank" rel="noopener noreferrer">정보보안암호수학과로 이동</a>
+        </div>
+    </article>
+
+    <div style="height:14px"></div>
+
+    <article class="edu-card" aria-labelledby="minor-title">
+        <div class="edu-card-body">
+            <h4 id="minor-title">복수전공 (Double Major)</h4>
+            <div class="major-en"><strong>Computer Science - BS</strong></div>
+            <div class="major-kr muted"><strong>(소프트웨어학부)</strong></div>
+            <div class="edu-gpa" aria-label="GPA">GPA: 3.78 / 4.5</div>
+        </div>
+        <div class="edu-preview" title="소프트웨어학부 홈페이지 미리보기">
+            <iframe src="https://cs.kookmin.ac.kr/" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            <a class="edu-site-link" href="https://cs.kookmin.ac.kr/" target="_blank" rel="noopener noreferrer">소프트웨어학부로 이동</a>
+        </div>
+    </article>
+
+    <!-- Research and Activities: card-style info blocks (left: body, right: preview) -->
+    <div class="section-gap" style="height:18px"></div>
+
+    <article class="info-card" aria-labelledby="lab-title">
+        <div class="edu-card-body">
+            <div class="card-header">
+                <h4 id="lab-title">연구실 (Research)</h4>
+            </div>
+            <div class="major-en">
+                <strong class="sicada-strong">
+                    <span class="sicada-name">SICADA</span>
+                    <span class="sicada-desc">(SIde Channel Analysis Design Academy)</span>
+                </strong>
+            </div>
+            <div class="major-kr muted">Undergraduate Student : 24.02 ~ 25.12 (약 1년 11개월)</div>
+            <ul class="activity-list">
+                <li>PQC, KpqC 암호 알고리즘에 대한 부채널 공격(Side Channel Attack) 학습</li>
+                <li>PQC, KpqC 대상 부채널 공격 대응기법(Countermeasure) 연구 및 실습</li>
+            </ul>
+        </div>
+        <div class="edu-preview info-preview" data-href="" title="SICADA 연구실로 이동">
+            <iframe src="https://cns.kookmin.ac.kr/cns/professor/lab3.do" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            <a class="edu-site-link" href="#" target="_blank" rel="noopener noreferrer">SICADA 연구실로 이동</a>
+        </div>
+    </article>
+
+    <div class="section-gap"></div>
+
+    <article class="info-card" aria-labelledby="club-title">
+        <div class="edu-card-body">
+            <h4 id="club-title">활동 (Activities)</h4>
+            <div class="major-en"><strong>PEPSI (Protect Every Personal Secret Information)</strong></div>
+            <div class="major-kr muted">Side Channle Analysis Club Member : 23.07 ~ 25.12 (약 2년 6개월)</div>
+            <ul class="activity-list">
+                <li>AES 암호 알고리즘에 대한 부채널 공격(Side Channel Attack) 학습</li>
+                <li>부채널 공격 대응기법(Countermeasure) 연구 및 실습</li>
+            </ul>
+        </div>
+        <div class="edu-preview info-preview" data-href="" title="PEPSI 동아리로 이동">
+            <iframe src="https://cns.kookmin.ac.kr/cns/club/club.do" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            <a class="edu-site-link" href="#" target="_blank" rel="noopener noreferrer">PEPSI 동아리로 이동</a>
+        </div>
+    </article>
+
+    <br>
+    <a class="back-link" href="../index.html">← 돌아가기</a>
+    <hr>
+</section>
+
+<script>
+// Initialize previews: set iframe.src from data-href when provided, set overlay links, and show overlay when embedding blocked
+(function() {
+    document.querySelectorAll('.edu-preview').forEach(function(preview) {
+        var iframe = preview.querySelector('iframe');
+        var overlay = preview.querySelector('.edu-site-link');
+        if (!iframe || !overlay) return;
+
+        // Choose the URL: prefer data-href (set on the container), otherwise the existing iframe src
+        var url = (preview.dataset && preview.dataset.href) ? preview.dataset.href.trim() : '';
+        if (!url) {
+            // Fallback to any existing src on iframe if it's not about:blank
+            var existing = iframe.getAttribute('src') || '';
+            if (existing && existing !== 'about:blank') url = existing;
+        }
+
+        if (url) {
+            // assign to iframe (only if not already set to avoid reloads)
+            if (iframe.getAttribute('src') !== url) iframe.setAttribute('src', url);
+            // set overlay link
+            overlay.setAttribute('href', url);
+            overlay.setAttribute('target', '_blank');
+            overlay.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            // no URL provided: hide overlay and leave iframe blank
+            overlay.style.display = 'none';
+        }
+
+        // Detect load / embed success. Cross-origin or X-Frame blocking will throw on access.
+        var loaded = false;
+        iframe.addEventListener('load', function() {
+            try {
+                var doc = iframe.contentDocument || iframe.contentWindow.document;
+                if (doc && doc.body && doc.body.childNodes.length > 0) {
+                    loaded = true;
+                    overlay.style.display = 'none';
+                } else {
+                    loaded = false;
+                }
+            } catch (e) {
+                // blocked by X-Frame-Options / cross-origin; show overlay
+                loaded = false;
+            }
+        });
+
+        // After a short delay, if not loaded and a URL exists, reveal the overlay
+        setTimeout(function() {
+            if (url && !loaded) {
+                overlay.style.display = 'flex';
+            }
+        }, 900);
+    });
+})();
+</script>
+</body>
+</html>

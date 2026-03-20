@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수상 & 인증 - ISCMYOO</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="header">
+    <img src="../assets/image/profile.jpeg" alt="Yoo Sung Hwan Profile" class="profile-img">
+    <h1>유성환 (Yoo Sung Hwan)</h1>
+</header>
+
+<section class="awards container">
+    <h2>🏆 수상 & 인증</h2>
+
+    <!-- Awards list -->
+    <div class="awards-list">
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/sindoh.jpg" alt="신도리코 감사장" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">3D 프린터 취약점 점검</div>
+                <div class="major-kr muted">감사장</div>
+                <div class="award-institution muted">신도리코</div>
+                <div class="work-period">2021.01</div>
+            </div>
+        </article>
+
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/bob.png" alt="Best of the Best 수료증" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">차세대 보안리더 양성 프로그램</div>
+                <div class="major-kr muted">수료증</div>
+                <div class="award-institution muted">BoB</div>
+                <div class="work-period">2021.03</div>
+            </div>
+        </article>
+
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/whitehat.jpeg" alt="화이트햇 콘테스트" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">2021 화이트햇 콘테스트</div>
+                <div class="major-kr muted">우수상</div>
+                <div class="award-institution muted">국방부, 사이버작전사령부</div>
+                <div class="work-period">2021.11</div>
+            </div>
+        </article>
+
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/sidechannel_2024.jpg" alt="부채널정보분석 경진대회 2024" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">2024 부채널정보분석 경진대회</div>
+                <div class="major-kr muted">부채널분석연구회장상</div>
+                <div class="award-institution muted">부채널분석연구회</div>
+                <div class="work-period">2024.07</div>
+            </div>
+        </article>
+
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/csic_w_2024.jpg" alt="정보보호학회 동계학술대회 2024" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">2024 정보보호학회 동계학술대회</div>
+                <div class="major-kr muted">정보보호학회장상</div>
+                <div class="award-institution muted">한국정보보호학회</div>
+                <div class="work-period">2024.11</div>
+            </div>
+        </article>
+
+        <article class="work-card">
+            <div class="work-card-icon"><img src="../assets/image/sidechannel_2025.jpg" alt="부채널정보분석 경진대회 2025" class="award-img"></div>
+            <div class="work-card-body">
+                <div class="work-org">2025 부채널정보분석 경진대회</div>
+                <div class="major-kr muted">기업이 주는 인재상</div>
+                <div class="award-institution muted">ICTK</div>
+                <div class="work-period">2025.07</div>
+            </div>
+        </article>
+    </div>
+
+    <br>
+    <a class="back-link" href="../index.html">← 돌아가기</a>
+    <hr>
+</section>
+
+<!-- Image modal (centered dialog box) -->
+<div id="img-modal" class="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-label="이미지 보기">
+        <button id="img-modal-close" class="modal-close" aria-label="Close modal">&times;</button>
+        <img class="modal-content" id="img-modal-img" src="" alt="">
+        <div id="img-modal-caption" class="modal-caption" aria-hidden="true"></div>
+    </div>
+</div>
+
+<script>
+    // Robust lightbox for award images using event delegation + direct handlers
+    (function () {
+        const modal = document.getElementById('img-modal');
+        const modalImg = document.getElementById('img-modal-img');
+        const modalClose = document.getElementById('img-modal-close');
+        const modalCaption = document.getElementById('img-modal-caption');
+
+        function openModal(src, alt) {
+            if (!src) return;
+            modalImg.src = src;
+            modalImg.alt = alt || '';
+            modalCaption.innerText = alt || ''; // Set caption text
+            // Force visibility and allow CSS to animate
+            modal.style.display = 'flex';
+            // tiny timeout to ensure the browser applies display before class change
+            setTimeout(function(){
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+            modalClose && modalClose.focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            // allow transition then hide display
+            setTimeout(function(){ modal.style.display = 'none'; }, 180);
+            modalImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Make close button keyboard-accessible
+        if (modalClose) {
+            modalClose.setAttribute('tabindex', '0');
+            modalClose.setAttribute('role', 'button');
+            modalClose.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeModal(); }
+            });
+            // direct click handler
+            modalClose.addEventListener('click', function (e) { e.stopPropagation(); closeModal(); });
+        }
+
+        // clicking on overlay background should close modal (but not clicks inside modal-box)
+        if (modal) {
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Direct handlers on images (reliable fallback)
+        const imgs = document.querySelectorAll('.award-img');
+        imgs.forEach(img => {
+            img.classList.add('is-clickable');
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('role', 'button');
+            img.addEventListener('click', function () { openModal(img.src, img.alt); });
+            img.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(img.src, img.alt); }
+            });
+        });
+
+        // Delegated click handler as additional safety
+        document.addEventListener('click', function (evt) {
+            const target = evt.target;
+            if (target && target.classList && target.classList.contains('award-img')) {
+                openModal(target.src, target.alt);
+                return;
+            }
+            // clicking on icon container should also open
+            const icon = target.closest && target.closest('.work-card-icon');
+            if (icon) {
+                const img = icon.querySelector && icon.querySelector('.award-img');
+                if (img) { openModal(img.src, img.alt); return; }
+            }
+            // click on overlay or close button closes modal
+            if (target === modal || target === modalClose) closeModal();
+        }, false);
+
+        // close on ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+
+        // prevent clicks on enlarged image from bubbling
+        modalImg && modalImg.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        // Test button to open first award image (for troubleshooting/verification)
+        const testBtn = document.getElementById('img-modal-test');
+        if (testBtn) {
+            testBtn.addEventListener('click', function () {
+                const first = document.querySelector('.award-img');
+                if (first) first.click();
+            });
+        }
+    })();
+</script>
+</body>
+</html>
