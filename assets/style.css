@@ -1308,79 +1308,107 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
 }
 .paper-action { margin-left: 6px; }
 
-/* ...existing code... */
-.work-card-icon { position: relative; overflow: hidden; }
-.work-card-icon::after {
+/* Icons inside .paper-action (GitHub, Notion) */
+.paper-action .action-icon,
+.paper-action svg.action-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.paper-action { align-items: center; display: inline-flex; }
+/* Ensure Notion svg respects the 'color' property for background */
+.action-icon { color: inherit; }
+
+/* Apply papers badge styling to any .paper-meta on other pages (conferences, etc.) */
+.paper-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.paper-meta .work-period {
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(180deg,#0b63d8,#0652b3); /* same strong blue as in .papers */
+    border: 1px solid rgba(3,64,160,0.18);
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(6,86,163,0.12) inset;
+    font-size: 0.86rem;
+    display: inline-flex;
+    align-items: center;
+}
+.paper-meta .work-role {
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(180deg,#2f3b4b,#202831); /* same dark slate as in .papers */
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    display: inline-flex;
+    align-items: center;
+}
+/* Ensure small-screen wrapping behaves the same */
+@media (max-width: 720px) {
+    .paper-meta { flex-wrap: wrap; gap: 8px 10px; }
+    .paper-meta .work-period, .paper-meta .work-role { padding: 6px 8px; font-size: 0.82rem; }
+}
+
+/* Projects page: emphasize project titles and style affiliation lines */
+.projects .project-title {
+    font-size: 1.12rem; /* slightly larger than major-kr */
+    font-weight: 800;  /* bolder */
+    color: #0b63d8;    /* accent blue to stand out */
+    margin-bottom: 6px;
+    line-height: 1.12;
+    display: block;
+    word-break: keep-all;
+}
+.projects .work-org {
+    font-size: 0.95rem;
+    color: #64748b; /* muted */
+    font-weight: 600;
+    margin-top: 4px;
+}
+/* Ensure project cards keep consistent spacing when title wraps */
+.projects .work-card-body { padding: 10px 0; }
+/* Projects: styled single-line summary/pill with left accent */
+.projects .work-summary {
+    display: inline-block;
+    position: relative;
+    margin: 10px 0 8px 0;
+    padding: 8px 12px 8px 18px; /* room for accent bar */
+    background: linear-gradient(180deg,#ffffff,#fbfdff);
+    border: 1px solid #eef3f8;
+    border-radius: 10px;
+    color: #334155;
+    font-size: 0.98rem;
+    line-height: 1.3;
+    box-shadow: 0 8px 20px rgba(16,24,40,0.04);
+    max-width: 100%;
+    white-space: nowrap; /* keep single-line on wide screens */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.projects .work-summary::before {
     content: '';
     position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    color: #ffffff;
-    background: rgba(0,0,0,0);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 160ms ease, background 160ms ease, transform 160ms ease;
-    border-radius: 12px;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 6px;
+    border-radius: 4px;
+    background: linear-gradient(180deg,#0b63d8,#0652b3);
 }
-.work-card-icon:hover::after {
-    content: '🔍';
-    background: rgba(0,0,0,0.42);
-    opacity: 1;
-    transform: scale(1.02);
-}
-.work-card-icon:hover { cursor: zoom-in; }
-
+/* make sure bullets and following content align nicely */
+.projects .work-bullets { margin-top: 8px; }
+/* Mobile: allow the summary to wrap and remove ellipsis */
 @media (max-width: 720px) {
-    /* Stack layout: icon + text row, then cover below full width */
-    .papers .work-card {
-        grid-template-columns: 56px 1fr;
-        grid-template-rows: auto auto;
-        gap: 12px 12px;
-        align-items: start;
+    .projects .work-summary {
+        white-space: normal;
+        padding-left: 14px; /* reduce left padding on small screens */
     }
-    .papers .work-card .work-card-icon { grid-column: 1 / 2; grid-row: 1 / 2; }
-    .papers .work-card .work-card-body { grid-column: 2 / 3; grid-row: 1 / 2; }
-    .papers .work-card .work-card-cover { grid-column: 1 / 3; grid-row: 2 / 3; justify-content: flex-start; }
-    .papers .work-card .paper-cover-img { max-width: 320px; width: 100%; height: auto; }
-
-    /* Make paper-meta wrap so author/date/action don't overflow */
-    .papers .paper-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 10px;
-        align-items: center;
-    }
-
-    /* Make actions smaller and left-aligned under the date if wrapped */
-    .paper-action { margin-left: 0; padding: 6px 8px; font-size: 0.82rem; }
-
-    /* Ensure award-institution (the trophy line) sits after meta and has some spacing */
-    .award-institution { margin-top: 8px; display:block; }
+    .projects .work-summary::before { left: 10px; top: 10px; bottom: 10px; }
 }
-
-/* Extra smaller screens tweak */
-@media (max-width: 420px) {
-    .papers .work-card { grid-template-columns: 48px 1fr; }
-    .papers .work-card .paper-cover-img { max-width: 100%; }
-    .paper-action { padding: 6px 8px; font-size: 0.8rem; }
-}
-
-/* Ensure .paper-meta children align on the same baseline: make each child an inline-flex, center items, set consistent line-height, vertical-align, and normalize padding if needed to avoid one element sitting higher. */
-.papers .paper-meta > * {
-    display: inline-flex !important;
-    align-items: center !important; /* vertically center content inside each badge */
-    vertical-align: middle !important;
-    line-height: 1 !important;
-}
-/* Ensure date and role have identical vertical padding and font-size so they sit on the same baseline */
-.papers .paper-meta .work-period,
-.papers .paper-meta .work-role {
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
-    font-size: 0.86rem !important;
-}
-/* Slight spacing for actions */
-.papers .paper-meta .paper-action { margin-left: 8px !important; }

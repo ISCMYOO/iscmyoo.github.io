@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프로젝트 - ISCMYOO</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css?v=2">
 </head>
 <body>
 <header class="header">
@@ -14,7 +14,161 @@
 
 <section class="projects container">
     <h2>🧩 프로젝트</h2>
-    <p>프로젝트 목록과 설명을 여기에 작성하세요.</p>
+
+    <!-- Project 1 -->
+    <article class="work-card">
+        <img src="../assets/image/bob.png" alt="BoB" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">3D 프린터 취약점 점검</div>
+            <div class="work-org muted">[BoB Team Project | Team 싹3D]</div>
+            <div class="paper-meta">
+                <span class="work-role">20.08 ~ 20.12 (5개월)</span>
+                <span class="work-role">팀 프로젝트</span>
+            </div>
+            <p class="work-summary">국내 3D 프린터 기업 제품의 보안 취약점 점검 및 실무 보안 가이드라인 제공.</p>
+            <ul class="work-bullets">
+                <li>제품 역공학 및 취약점 탐지(펌웨어/통신/인증)</li>
+                <li>취약점 기반 실험 및 PoC 작성</li>
+                <li>사용자/관리자 보안 가이드라인 정리 및 개선 제안</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="work-card">
+        <img src="../assets/image/center_logo.png" alt="육군 사이버작전센터" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">보안 관제 SW 개발</div>
+            <div class="work-org muted">[육군 사이버작전센터]</div>
+            <div class="paper-meta">
+                <span class="work-role">21.09 ~ 23.01 (1년 4개월)</span>
+                <span class="work-role">개인 프로젝트</span>
+            </div>
+            <p class="work-summary">육군 전사 네트워크 관제 및 Python/JS 기반의 사이버 공격 탐지·차단 자동화 도구 개발.</p>
+            <ul class="work-bullets">
+                <li>TMS/UTM/IPS 등 관제 도구 연동·자동화</li>
+                <li>Splunk(SIEM)를 활용한 로그 수집·분석 및 침입 추적</li>
+                <li>탐지 규칙 자동 배포 및 차단 전파 자동화 툴 개발</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="work-card">
+        <img src="../assets/image/sicada.png" alt="SICADA" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">KpqC 공모전 2라운드 알고리즘 부채널 분석 및 암호전환 안전성 확보방안 연구</div>
+            <div class="work-org muted">[SICADA Lab with 국가보안기술연구소(NSR)]</div>
+            <div class="paper-meta">
+                <span class="work-role">24.04 ~ 24.09 (6개월)</span>
+                <span class="work-role">팀 프로젝트</span>
+            </div>
+            <p class="work-summary">KpqC 공모전 2라운드 진출 알고리즘을 대상으로 부채널 안전성 검증 및 암호전환(crypto migration) 관점의 대응 방안 연구.</p>
+            <ul class="work-bullets">
+                <li>측정 환경 구성 및 전력/EM 등 부채널 데이터 수집</li>
+                <li>SMAUG-T 알고리즘의 취약 함수 식별 및 공격·검증</li>
+                <li>암호전환 시 안전성 확보를 위한 설계 권고안 제시</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="work-card">
+        <img src="../assets/image/kookmin.jpg" alt="Kookmin" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">빅넘 구현 (BigNum)</div>
+            <div class="work-org muted">[University Class | Team 빅넘여따쓰조]</div>
+            <div class="paper-meta">
+                <span class="work-role">24.09 ~ 24.12 (4개월)</span>
+                <span class="work-role">팀 프로젝트</span>
+                <a class="paper-action paper-action--poster" href="https://github.com/Addvan-App-Program-BigNum-using-here/BigNum" target="_blank" rel="noopener noreferrer" aria-label="Open Github repository">
+                    <!-- GitHub mark (inline SVG) -->
+                    <svg class="action-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M12 .297a12 12 0 00-3.797 23.4c.6.111.82-.261.82-.58 0-.287-.011-1.047-.017-2.055-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.809 1.304 3.494.997.108-.775.418-1.305.76-1.605-2.665-.304-5.466-1.333-5.466-5.93 0-1.31.468-2.381 1.235-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 016.003 0c2.292-1.553 3.298-1.23 3.298-1.23.654 1.653.243 2.874.12 3.176.77.841 1.233 1.912 1.233 3.222 0 4.609-2.803 5.624-5.475 5.921.43.372.814 1.102.814 2.222 0 1.604-.015 2.897-.015 3.293 0 .322.216.698.825.579A12 12 0 0012 .297"/>
+                    </svg>
+                    Github Page
+                </a>
+            </div>
+            <p class="work-summary">1024/2048-bit 연산 체계 C 언어 구현: 소수 생성·판별, 사칙연산 및 RSA 구현.</p>
+            <ul class="work-bullets">
+                <li>C언어 기반의 연산 체계 구현 및 Valgrind 기반 검증</li>
+                <li>Miller - Rabin 소수 생성 알고리즘 및 RSA 알고리즘 구현</li>
+                <li>구현체 라이브러리 생성 및 배포</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 5 -->
+    <article class="work-card">
+        <img src="../assets/image/kookmin.jpg" alt="Kookmin" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">USB 보안 프로그램 취약점 분석</div>
+            <div class="work-org muted">[University Class]</div>
+            <div class="paper-meta">
+                <span class="work-role">24.09 ~ 24.12 (4개월)</span>
+                <span class="work-role">개인 프로젝트</span>
+                <a class="paper-action paper-action--poster" href="../assets/paper/Report_1.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Github repository">분석 보고서 보기</a>
+            </div>
+            <p class="work-summary">취약한 USB 보안 프로그램을 역공학하여 개인키 탈취 및 비밀 데이터 복구 실험 수행.</p>
+            <ul class="work-bullets">
+                <li>역공학 도구(IDA Pro) 기반 바이너리 분석</li>
+                <li>암호키 저장·관리 취약점 식별 및 복구 절차 시연</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 6 -->
+    <article class="work-card">
+        <img src="../assets/image/sicada.png" alt="SICADA" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">격자기반 암호 알고리즘의 부분 함수별 부채널 대응기법 연구</div>
+            <div class="work-org muted">[SICADA Lab]</div>
+            <div class="paper-meta">
+                <span class="work-role">25.01 ~ 25.12 (1년)</span>
+                <span class="work-role">팀 프로젝트</span>
+            </div>
+            <p class="work-summary">NIST PQC(Kyber, Dilithium) 격자기반 알고리즘의 부분 함수에 대해 부채널 공격을 식별하고 대응기법을 제안·검증.</p>
+            <ul class="work-bullets">
+                <li>격자기반 알고리즘 대상 부채널 공격 동향 파악</li>
+                <li>알고리즘에 대한 공격 표면 분석 및 부분 함수 취약점 분류</li>
+                <li>하드웨어/소프트웨어 대응기법 설계 및 성능 평가</li>
+            </ul>
+        </div>
+    </article>
+
+    <!-- Project 7 -->
+    <article class="work-card">
+        <img src="../assets/image/personal.png" alt="Project Icon" class="work-card-logo">
+        <div class="work-card-body">
+            <div class="major-kr project-title">임베디드 보안 SW 개발 (AP ECU, HSM, MACsec, SecOC)</div>
+            <div class="work-org muted">[Personal Project]</div>
+            <div class="paper-meta">
+                <span class="work-role">26.01 ~ 26.06 (6개월)</span>
+                <span class="work-role">개인 프로젝트</span>
+                <a class="paper-action paper-action--poster" href="https://github.com/ISCMYOO/embedded_security_sw_devleop" target="_blank" rel="noopener noreferrer" aria-label="Open Github repository">
+                    <svg class="action-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M12 .297a12 12 0 00-3.797 23.4c.6.111.82-.261.82-.58 0-.287-.011-1.047-.017-2.055-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.809 1.304 3.494.997.108-.775.418-1.305.76-1.605-2.665-.304-5.466-1.333-5.466-5.93 0-1.31.468-2.381 1.235-3.222-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 016.003 0c2.292-1.553 3.298-1.23 3.298-1.23.654 1.653.243 2.874.12 3.176.77.841 1.233 1.912 1.233 3.222 0 4.609-2.803 5.624-5.475 5.921.43.372.814 1.102.814 2.222 0 1.604-.015 2.897-.015 3.293 0 .322.216.698.825.579A12 12 0 0012 .297"/>
+                    </svg>
+                    Github Page
+                </a>
+                <a class="paper-action paper-action--poster" href="https://www.notion.so/iscmyoo/SW-AP-ECU-HSM-MACsec-SecOC-2efa05c043f7803e94faf355f9db0a44?source=copy_link" target="_blank" rel="noopener noreferrer" aria-label="Open Notion page">
+                    <!-- Notion icon: rounded square outline with stroked 'N' - monochrome and inherits currentColor -->
+                    <svg class="action-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="22" height="22" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <path d="M7 17V7l6 10V7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Notion Page
+                </a>
+            </div>
+            <p class="work-summary">AP ECU(REE/TEE) 환경과 HSM 구축 및 라즈베리파이 기반 MACsec, SecOC 보안 네트워크 구현 및 PQC 적용을 목표로 하는 임베디드 보안 SW 개발.</p>
+            <ul class="work-bullets">
+                <li>STM32MP157 보드 기반 AP ECU 환경 구축</li>
+                <li>STM32MP157 및 라즈베리파이 간의 Ethernet 통신 환경 구축</li>
+                <li>AES 기반 MACsec, SecOC 구현 및 PQC 기반 통신 구현</li>
+            </ul>
+        </div>
+    </article>
+
     <br>
     <a class="back-link" href="../index.html">← 돌아가기</a>
     <hr>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>국제 컨퍼런스 - ISCMYOO</title>
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css?v=2">
 </head>
 <body>
 <header class="header">
@@ -14,10 +14,98 @@
 
 <section class="conferences container">
     <h2>🌐 국제 컨퍼런스</h2>
-    <p>참석하거나 발표한 국제 컨퍼런스 정보를 여기에 작성하세요.</p>
+
+    <!-- CHES 2025 attendance card -->
+    <div class="info-card">
+        <div class="edu-card-body">
+            <div class="card-header">
+                <img src="../assets/image/ches.jpeg" alt="CHES" class="home-card-logo" onerror="this.style.display='none'">
+                <h3 style="margin:0;">2025 Workshop on Cryptographic Hardware and Embedded Systems (CHES)</h3>
+            </div>
+
+            <div class="paper-meta">
+                <span class="work-period">2025.09</span>
+            </div>
+
+            <div style="margin-top:12px; color:#475569;">
+                <ul style="margin:0 0 0 18px; padding:0; color:#475569;">
+                    <li>최신 암호 하드웨어 및 임베디드 시스템 연구 동향 학습</li>
+                    <li>발표자 및 부스를 통해 연구자 및 산업계 참석자들과 네트워킹 수행</li>
+                    <li>PQC 부채널 분석 및 최적화, 경량 가속 구현 연구 동향 학습</li>
+                    <li>차량보안 튜토리얼을 통한 임베디드 시스템 보안 적용 학습</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="edu-preview info-preview" title="CHES 2025 공식 홈페이지 미리보기">
+            <div style="height:8px"></div>
+            <!-- start with thumbnail visible, attempt to load iframe and swap in if allowed -->
+            <iframe src="https://ches.iacr.org/2025/" loading="lazy" referrerpolicy="no-referrer" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" style="width:100%; height:140px; border:0; border-radius:10px; display:none;"></iframe>
+            <img src="../assets/image/ches.jpeg" alt="CHES preview" class="edu-preview-thumb" style="display:block; width:100%; height:140px; object-fit:cover; border-radius:10px; border:1px solid #eef3f8; margin-top:8px;">
+            <a class="edu-site-link" href="https://ches.iacr.org/2025/" target="_blank" rel="noopener noreferrer">CHES 2025로 이동</a>
+        </div>
+    </div>
+
     <br>
     <a class="back-link" href="../index.html">← 돌아가기</a>
     <hr>
 </section>
+
+<script>
+// Initialize previews: same logic as education.html — show overlay when iframe is blocked and set overlay link
+(function() {
+    document.querySelectorAll('.edu-preview').forEach(function(preview) {
+        var iframe = preview.querySelector('iframe');
+        var overlay = preview.querySelector('.edu-site-link');
+        var thumb = preview.querySelector('.edu-preview-thumb');
+        if (!iframe || !overlay) return;
+
+        var url = overlay.getAttribute('href') || iframe.getAttribute('src') || '';
+        if (url) {
+            overlay.setAttribute('href', url);
+            overlay.setAttribute('target', '_blank');
+            overlay.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            overlay.style.display = 'none';
+        }
+
+        // start assuming iframe is not usable; thumb is already visible by default
+        var embedded = false;
+
+        // attempt to load iframe; if embedding allowed, show it and hide thumbnail
+        iframe.addEventListener('load', function() {
+            try {
+                var doc = iframe.contentDocument || iframe.contentWindow.document;
+                // if we can access the document and it has content, consider embedding successful
+                if (doc && doc.body && doc.body.childNodes.length > 0) {
+                    embedded = true;
+                    // show iframe and hide thumbnail/overlay
+                    iframe.style.display = 'block';
+                    if (thumb) thumb.style.display = 'none';
+                    overlay.style.display = 'none';
+                } else {
+                    embedded = false;
+                }
+            } catch (e) {
+                // cross-origin / X-Frame-Options blocked
+                embedded = false;
+            }
+        });
+
+        // After a short delay, if embedding did not succeed, show thumbnail and overlay
+        setTimeout(function() {
+            if (url && !embedded) {
+                if (thumb) thumb.style.display = 'block';
+                iframe.style.display = 'none';
+                overlay.style.display = 'flex';
+                overlay.style.alignItems = 'center';
+                overlay.style.justifyContent = 'center';
+                overlay.style.gap = '8px';
+                overlay.style.marginTop = thumb ? '8px' : '8px';
+            }
+        }, 900);
+    });
+})();
+</script>
 </body>
 </html>
