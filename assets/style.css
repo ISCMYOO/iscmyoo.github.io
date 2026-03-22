@@ -1645,3 +1645,35 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     padding-left: 22px !important; /* small breathing room from the left edge for skills page */
 }
 
+/* Awards page: show magnifier cursor when hovering or focusing award icons/images */
+.awards .work-card-icon,
+.awards .work-card-icon .award-img,
+.awards .award-img,
+.awards .work-card-icon.is-clickable,
+.awards .is-clickable {
+    cursor: zoom-in; /* magnifier cursor to indicate click-to-zoom */
+}
+/* also apply on focus for keyboard users */
+.awards .work-card-icon:focus,
+.awards .award-img:focus {
+    cursor: zoom-in;
+    outline: none; /* keep visual focus handled elsewhere */
+}
+
+/* Papers page: show magnifier cursor when hovering or focusing paper icons/thumbnails */
+.papers .work-card-icon,
+.papers .work-card-icon .award-img,
+.papers .award-img,
+.papers .paper-cover-img,
+.papers .work-card-icon.is-clickable,
+.papers .is-clickable {
+    cursor: zoom-in; /* magnifier cursor to indicate click-to-zoom */
+}
+/* also apply on focus for keyboard users */
+.papers .work-card-icon:focus,
+.papers .award-img:focus,
+.papers .paper-cover-img:focus {
+    cursor: zoom-in;
+    outline: none; /* visual focus handled elsewhere */
+}
+
