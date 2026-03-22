@@ -1503,7 +1503,7 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     padding-top: 10px !important;
     padding-bottom: 10px !important;
     gap: 8px !important; /* reduced gap between icon and label on skills page */
-    min-height: 56px !important; /* taller box so icon feels larger */
+    min-height: 64px !important; /* increased height for improved readability */
     align-items: center !important;
 }
 /* Make tech icon larger only on skills page */
@@ -1514,21 +1514,22 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     max-width: 44px !important;
     max-height: 44px !important;
 }
-/* Force nav-card-tag to be vertically centered within the taller tech-box on skills page */
+/* Tweak for skills page: center label text horizontally within the right area */
 .skills .nav-card-tag {
-    display: inline-flex !important;
-    align-items: center !important; /* vertical centering */
-    justify-content: flex-start !important; /* keep text just to the right of icon */
-    height: 44px !important; /* match icon visual height for perfect centering */
-    line-height: 1 !important;
-    padding-left: 8px !important; /* reduced padding between icon and text */
-    padding-right: 12px !important;
-    background: transparent !important; /* ensure no pill background */
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    text-align: left !important;
+    /* center the label horizontally within the right-side area */
+    display: flex !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    align-items: center !important;
+    justify-content: center !important; /* center label horizontally */
+    padding-left: 0 !important; /* remove left padding so centering aligns with icon gap */
+    padding-right: 0 !important;
+    text-align: center !important;
+    border: none !important; /* remove visible border for skills page */
+    background: transparent !important; /* remove pill/filled bg for skills page */
+    box-shadow: none !important; /* remove any shadow that may look like a border */
 }
+
 /* Mobile fallbacks to avoid overflow */
 @media (max-width: 880px) {
     .skills .tech-icon, .skills .tech-box .tech-icon { width: 40px !important; height: 40px !important; }
@@ -1560,54 +1561,87 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
 .skills .nav-card-tags {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 equal columns */
-    gap: 12px 16px; /* row-gap, column-gap */
-    align-items: start; /* align items to top of cell */
-    justify-items: stretch; /* make each cell fill available width */
-    margin-top: 10px; /* keep existing spacing from content above */
+    gap: 12px 16px; /* uniform row and column gap */
+    align-items: center !important;
+    justify-items: stretch !important;
+    margin-top: 12px !important;
 }
 
-/* Ensure tech-box inside skills nav-card-tags fills its grid cell, but keep a 10px left margin as requested */
-.skills .nav-card-tags .tech-box {
-    display: flex !important; /* icon+label layout */
-    width: calc(100% - 10px) !important; /* account for left margin */
-    margin: 0 0 0 10px !important; /* left margin of ~10px */
-    box-sizing: border-box !important;
+/* Study page: force 3 columns and make tech-box content flexible so text won't wrap early */
+.study .nav-card-tags {
+    display: grid !important;
+    /* ensure three columns, but give each a reasonable minimum so the tag text has room */
+    grid-template-columns: repeat(3, minmax(240px, 1fr)) !important;
+    gap: 12px 16px !important;
+    align-items: center !important;
+    justify-items: stretch !important;
+    width: 100% !important;
+    margin-top: 12px !important;
 }
 
-/* Make tag text black on skills page only */
-.skills .nav-card-tag {
-    color: #0f1724 !important;
+.study .nav-card-tags .tech-box {
+    min-height: 64px !important; /* increased height for improved readability */
+    align-items: center !important; /* ensure icon and text are vertically centered */
+    padding-top: 10px !important; /* small increase to vertical padding to match new height */
+    padding-bottom: 10px !important;
 }
 
-/* Responsive: 2 columns on medium screens, 1 on small screens */
+/* Icon fixed size, allow text to take remaining space (study page) */
+.study .tech-box .tech-icon {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+}
+
+/* Make the tag fill remaining space so text can be wider and center-aligned */
+.study .nav-card-tag {
+    display: block !important;
+    flex: 1 1 auto !important; /* allow to grow */
+    min-width: 0 !important; /* allow flex shrinking when needed */
+    width: auto !important;
+    text-align: center !important; /* horizontal center */
+    color: #0f1724 !important; /* black */
+    background: transparent !important; /* remove pill background */
+    border: none !important; /* remove border */
+    box-shadow: none !important;
+    padding: 6px 12px !important; /* slightly more horizontal padding for legibility */
+    line-height: 1.15 !important;
+    white-space: normal !important; /* allow wrapping only when needed */
+}
+
+/* Hide left stripe on study page */
+.study .tech-box::before { display: none !important; }
+
 @media (max-width: 880px) {
-    .skills .nav-card-tags {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px 12px;
-    }
-    .skills .nav-card-tags .tech-box { width: calc(100% - 8px) !important; margin-left: 8px !important; }
+    .study .nav-card-tags { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
 }
 @media (max-width: 520px) {
-    .skills .nav-card-tags {
-        grid-template-columns: 1fr;
-        gap: 10px 0;
-    }
-    .skills .nav-card-tags .tech-box { justify-content: flex-start; width: 100% !important; margin-left: 10px !important; }
+    .study .nav-card-tags { grid-template-columns: 1fr !important; }
 }
 
-/* Skills page: center nav-card-tag horizontally and vertically (left/right center) */
-.skills .nav-card-tag {
-    display: flex !important;         /* make it a flex container */
-    align-items: center !important;   /* vertical centering */
-    justify-content: center !important; /* horizontal centering */
-    flex: 1 1 auto !important;        /* take available space next to the icon */
-    padding-left: 0 !important;       /* remove left padding so centering is accurate */
-    padding-right: 0 !important;
-    text-align: center !important;    /* fallback centering for inline text */
-    height: auto !important;          /* avoid forced height conflicts */
+/* Ensure study info-cards don't leave an empty preview column and make tags vertically centered */
+.study .info-card {
+    grid-template-columns: 1fr !important; /* remove the right preview column for study page */
 }
 
-/* Index page: increase space between nav-card-icon and nav-card-title-inline */
-.navigation .nav-card-title-inline {
-    margin-left: 12px !important; /* create breathing room between icon and title on index */
+.study .nav-card-tags .tech-box {
+    min-height: 64px !important; /* increased height for improved readability */
+    align-items: center !important; /* ensure icon and text are vertically centered */
+    padding-top: 10px !important; /* small increase to vertical padding to match new height */
+    padding-bottom: 10px !important;
 }
+
+.study .nav-card-tag {
+    display: flex !important;        /* make tag a flex container so we can vertically center text */
+    align-items: center !important;  /* vertical centering inside the tag */
+    justify-content: center !important; /* horizontal center */
+    height: 100% !important;         /* let the tag fill the tech-box height */
+    padding-top: 0 !important;       /* rely on tech-box padding for vertical spacing */
+    padding-bottom: 0 !important;
+}
+
+/* skills page: add slight left padding inside topic-card's body so text isn't flush to the left */
+.skills .topic-card .topic-body {
+    padding-left: 22px !important; /* small breathing room from the left edge for skills page */
+}
+
