@@ -1645,6 +1645,17 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     padding-left: 22px !important; /* small breathing room from the left edge for skills page */
 }
 
+/* Papers page: add top padding for the summary bullets inside paper cards (only papers.html) */
+.papers .work-bullets.paper-summary {
+    padding-top: 20px !important;
+    margin-top: 0; /* ensure spacing is controlled by padding, not margin */
+}
+
+/* Papers page: increase vertical spacing between summary list items; scoped to papers.html only */
+.papers .work-bullets.paper-summary li:not(:last-child) {
+    margin-bottom: 20px !important; /* increase gap between items */
+}
+
 /* Awards page: show magnifier cursor when hovering or focusing award icons/images */
 .awards .work-card-icon,
 .awards .work-card-icon .award-img,
