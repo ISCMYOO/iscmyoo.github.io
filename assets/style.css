@@ -1640,10 +1640,6 @@ hr { border: none; border-top: 1px solid #eef3f8; margin-top: 1rem; }
     padding-bottom: 0 !important;
 }
 
-/* skills page: add slight left padding inside topic-card's body so text isn't flush to the left */
-.skills .topic-card .topic-body {
-    padding-left: 22px !important; /* small breathing room from the left edge for skills page */
-}
 
 /* Papers page: add top padding for the summary bullets inside paper cards (only papers.html) */
 .papers .work-bullets.paper-summary {
