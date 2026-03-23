@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>논문 - ISCMYOO</title>
     <link rel="stylesheet" href="../assets/style.css?v=2">
+    <style>
+        /* papers.html only: use a real element for the left accent so it stretches with multi-line titles */
+        .papers .major-kr.muted {
+            position: relative !important;
+            display: flex !important; /* use flex so accent can stretch with multi-line content */
+            align-items: stretch !important;
+            gap: 12px !important;
+            padding-left: 0 !important; /* no pseudo-element padding needed */
+            margin: 0.6rem 0 0.6rem 0 !important;
+            color: #111 !important;
+            line-height: 1.28 !important;
+            font-weight: 600 !important;
+            white-space: normal !important;
+        }
+        .papers .major-kr.muted .title-accent {
+            display: block !important;
+            width: 6px !important;
+            background: linear-gradient(180deg,#0b63d8,#0652b3) !important;
+            border-radius: 3px !important;
+            flex: 0 0 auto !important;
+        }
+        .papers .major-kr.muted .title-text {
+            display: block !important;
+            flex: 1 1 auto !important;
+            color: inherit !important;
+            line-height: inherit !important;
+        }
+        /* responsive tweak */
+        @media (max-width: 420px) {
+            .papers .major-kr.muted { gap: 8px !important; }
+            .papers .major-kr.muted .title-accent { width: 8px !important; }
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -20,7 +53,7 @@
         <div class="work-card-icon"><img src="../assets/image/kais.jpg" alt="KAIS" class="award-img"></div>
         <div class="work-card-body">
             <div class="work-org">[2020 한국산업보안연구학회(KAIS)]</div>
-            <div class="major-kr muted">산업 기술의 유출방지와 보호를 위한 네트워크 3D 프린터 보안 체크리스트 연구</div>
+            <div class="major-kr muted"><span class="title-accent" aria-hidden="true"></span><span class="title-text">산업 기술의 유출방지와 보호를 위한 네트워크 3D 프린터 보안 체크리스트 연구</span></div>
             <div class="paper-meta">
                 <span class="work-role">2020.12</span>
                 <span class="work-role">공동저자</span>
@@ -51,7 +84,7 @@
         <div class="work-card-icon"><img src="../assets/image/sidechannel_2024.jpg" alt="SCIA 2024" class="award-img"></div>
         <div class="work-card-body">
             <div class="work-org">[2024 부채널정보분석 경진대회(SCIA)]</div>
-            <div class="major-kr muted">KpqC 2라운드 후보 SMAUG-T의 키종속 연산에 대한 단순전력분석</div>
+            <div class="major-kr muted"><span class="title-accent" aria-hidden="true"></span><span class="title-text">KpqC 2라운드 후보 SMAUG-T의 키종속 연산에 대한 단순전력분석</span></div>
             <div class="paper-meta">
                 <span class="work-role">2024.07</span>
                 <span class="work-role">1저자</span>
@@ -84,7 +117,7 @@
         <div class="work-card-icon"><img src="../assets/image/csic_w_2024.jpg" alt="CISC-W'24" class="award-img"></div>
         <div class="work-card-body">
             <div class="work-org">[2024 정보보호학회 동계학술대회(CISC-W’24)]</div>
-            <div class="major-kr muted">KpqC 2라운드 후보 TiMER의 메시지 인코딩에 대한 단일파형공격</div>
+            <div class="major-kr muted"><span class="title-accent" aria-hidden="true"></span><span class="title-text">KpqC 2라운드 후보 TiMER의 메시지 인코딩에 대한 단일파형공격</span></div>
             <div class="paper-meta">
                 <span class="work-role">2024.11</span>
                 <span class="work-role">1저자</span>
@@ -117,7 +150,7 @@
         <div class="work-card-icon"><img src="../assets/image/KCI.jpg" alt="KCI" class="award-img"></div>
         <div class="work-card-body">
             <div class="work-org">[2025 2월 정보보호학회논문지(KCI)]</div>
-            <div class="major-kr muted">SMAUG-T 곱셈 연산에 대한 단순전력분석 공격 및 대응기법</div>
+            <div class="major-kr muted"><span class="title-accent" aria-hidden="true"></span><span class="title-text">SMAUG-T 곱셈 연산에 대한 단순전력분석 공격 및 대응기법</span></div>
             <div class="paper-meta">
                 <span class="work-role">2025.02</span>
                 <span class="work-role">1저자</span>
@@ -149,7 +182,7 @@
         <div class="work-card-icon"><img src="../assets/image/sidechannel_2025.jpg" alt="SCIA 2025" class="award-img"></div>
         <div class="work-card-body">
             <div class="work-org">[2025 부채널정보분석 경진대회(SCIA)]</div>
-            <div class="major-kr muted">NIST PQC Dilithium의 부채널 공격 및 대응기법 동향 분석</div>
+            <div class="major-kr muted"><span class="title-accent" aria-hidden="true"></span><span class="title-text">NIST PQC Dilithium의 부채널 공격 및 대응기법 동향 분석</span></div>
             <div class="paper-meta">
                 <span class="work-role">2025.07</span>
                 <span class="work-role">1저자</span>
