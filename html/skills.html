@@ -5,6 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기슬 스택 - ISCMYOO</title>
     <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* Ensure the skills section respects the page horizontal gutter
+           and that topic-card doesn't visually touch the right edge. Scoped to skills.html only. */
+        .skills.container {
+            padding-right: 1rem !important; /* 16px gutter on the right */
+            box-sizing: border-box !important;
+        }
+        /* Make topic cards account for padding and avoid overflow to the right */
+        .skills .topic-card {
+            box-sizing: border-box !important; /* include padding/border in width calculations */
+            width: 100% !important;
+        }
+
+        /* Match study page: use 3 columns with a sensible minimum so columns have equal width like study */
+        .skills .nav-card-tags {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(240px, 1fr)) !important; /* same as study */
+            gap: 12px 16px !important;
+            align-items: center !important;
+            justify-items: stretch !important;
+            width: 100% !important;
+            margin-top: 12px !important;
+        }
+
+        /* Tech-box sizing: make them uniform like study page */
+        .skills .nav-card-tags .tech-box {
+            min-height: 64px !important;
+            align-items: center !important;
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+            width: 100% !important; /* ensure each cell's box fills the grid column */
+            display: flex !important;
+            gap: 12px !important;
+        }
+        .skills .nav-card-tags .tech-box .tech-icon {
+            width: 40px !important;
+            height: 40px !important;
+            flex: 0 0 40px !important;
+        }
+
+        /* Responsive: follow study page breakpoints */
+        @media (max-width: 880px) {
+            .skills .nav-card-tags { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+        }
+        @media (max-width: 520px) {
+            .skills .nav-card-tags { grid-template-columns: 1fr !important; }
+            .skills .nav-card-tags .tech-box { min-height: 64px !important; }
+            .skills .nav-card-tags .tech-box .tech-icon { width: 34px !important; height: 34px !important; }
+        }
+
+        /* ensure nav-card-tag is black / near-black on skills page */
+        .skills .nav-card-tag {
+            color: #0f1724 !important; /* near-black for readability */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding-left: 0 !important;
+        }
+
+        /* Make .topic-card visually match .info-card (study page) */
+        .skills .topic-card {
+            /* existing visual rules preserved; box-sizing override above ensures padding is honored */
+            display: grid !important;
+            grid-template-columns: 1fr 320px !important; /* body / preview (preview may not exist here) */
+            gap: 16px !important;
+            align-items: start !important;
+            background: #fff !important;
+            border: 1px solid #eef3f8 !important;
+            padding: 14px !important;
+            border-radius: 12px !important;
+            box-shadow: 0 8px 26px rgba(16,24,40,0.04) !important;
+            margin-top: 18px !important;
+        }
+        @media (max-width: 880px) {
+            .skills .topic-card { grid-template-columns: 1fr !important; grid-template-rows: auto auto !important; }
+        }
+
+        /* Make .topic-body visually match .edu-card-body (study page) */
+        .skills .topic-body h3 { margin: 0 0 6px 0 !important; font-size: 1.03rem !important; }
+        .skills .topic-body p { margin: 6px 0 0 0 !important; color: #475569 !important; }
+
+    </style>
 </head>
 <body>
 <header class="header">
@@ -21,15 +104,15 @@
             <div class="topic-body">
                 <h3>언어 (Languages)</h3>
                 <div class="nav-card-tags">
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/C_logo.png" alt="C logo">
                         <span class="nav-card-tag">C</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/python_logo.png" alt="Python logo">
                         <span class="nav-card-tag">Python</span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -38,25 +121,25 @@
             <div class="topic-body">
                 <h3>도구 (Tools)</h3>
                 <div class="nav-card-tags">
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/IDA_logo.png" alt="IDA Pro logo">
                         <span class="nav-card-tag">IDA Pro</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/GDB_logo.png" alt="GDB logo">
                         <span class="nav-card-tag">GDB</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/wireshark.jpg" alt="Wireshark logo">
                         <span class="nav-card-tag">Wireshark</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/burpsuite_logo.png" alt="Burpsuite logo">
                         <span class="nav-card-tag">Burpsuite</span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -65,20 +148,20 @@
             <div class="topic-body">
                 <h3>운영체제 (Operating Systems)</h3>
                 <div class="nav-card-tags">
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/linux_logo.png" alt="Linux logo">
                         <span class="nav-card-tag">Linux</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/MACOS_logo.jpg" alt="MAC logo">
                         <span class="nav-card-tag">MAC</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/window.png" alt="Window logo">
                         <span class="nav-card-tag">Window</span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -88,20 +171,20 @@
             <div class="topic-body">
                 <h3>개발 플랫폼 (Development Platforms)</h3>
                 <div class="nav-card-tags">
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/visual_studio_logo.png" alt="Visual Studio logo">
                         <span class="nav-card-tag">Visual Studio</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/visual_studio_code_logo.png" alt="VS Code logo">
                         <span class="nav-card-tag">Visual Studio Code</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/github_logo.png" alt="GitHub logo">
                         <span class="nav-card-tag">GitHub</span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </article>
@@ -111,15 +194,15 @@
             <div class="topic-body">
                 <h3>커뮤니케이션 (Communication)</h3>
                 <div class="nav-card-tags">
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/slack_logo.png" alt="Slack logo">
                         <span class="nav-card-tag">Slack</span>
-                    </span>
+                    </div>
 
-                    <span class="tech-box">
+                    <div class="tech-box">
                         <img class="tech-icon" src="../assets/image/notion_logo.png" alt="Notion logo">
                         <span class="nav-card-tag">Notion</span>
-                    </span>
+                    </div>
                 </div>
             </div>
         </article>
