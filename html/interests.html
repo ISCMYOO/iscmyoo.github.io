@@ -5,6 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관심 분야 - ISCMYOO</title>
     <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        /* interests.html only: tweak topic-icon box spacing and make it square */
+        .interests .topic-icon {
+            /* make a visually separated square box and move it from the left edge */
+            display: inline-grid !important;
+            place-items: center !important;
+            margin-left: 12px !important;     /* move the icon box away from the left wall */
+            width: 56px !important;           /* square size */
+            height: 56px !important;          /* square size */
+            min-width: 56px !important;
+            min-height: 56px !important;
+            font-size: 24px !important;       /* emoji size */
+            border-radius: 12px !important;
+            background: linear-gradient(135deg,#f0f7ff,#eef6ff) !important;
+            border: 1px solid #eef3f8 !important;
+            box-shadow: 0 6px 18px rgba(16,24,40,0.04) inset !important;
+            box-sizing: border-box !important;
+            padding-left: 0 !important;       /* ensure centered content */
+            padding-right: 0 !important;
+        }
+        /* small screen tweak */
+        @media (max-width: 520px) {
+            .interests .topic-icon {
+                margin-left: 10px !important;
+                width: 48px !important;
+                height: 48px !important;
+                font-size: 20px !important;
+            }
+        }
+
+        /* keep the paragraph accent bar previously added */
+        .interests .topic-body p {
+            position: relative;
+            padding-left: 1.2rem; /* space for the accent */
+            margin: 0.5rem 0 0.5rem 0; /* keep breathing room */
+        }
+        .interests .topic-body p::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0; /* span full p height even when wrapped */
+            width: 8px; /* accent thickness */
+            background: linear-gradient(180deg,#0b63d8,#0652b3);
+            border-radius: 3px;
+        }
+        @media (max-width: 420px) {
+            .interests .topic-icon { margin-left: 8px !important; width: 40px !important; height: 40px !important; font-size: 18px !important; }
+            .interests .topic-body p { padding-left: 1rem; }
+            .interests .topic-body p::before { width: 6px; }
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -25,17 +77,6 @@
                     <li>암호 프로토콜 분석(핸드셰이크, 인증, 키관리)</li>
                     <li>실제 구현에서의 사이드채널/취약점 분석</li>
                 </ul>
-                <div class="topic-resources">
-                    <a href="https://csrc.nist.gov/Projects/post-quantum-cryptography" target="_blank" rel="noopener noreferrer">NIST PQC 프로젝트
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://www.iacr.org/" target="_blank" rel="noopener noreferrer">IACR — 연구 논문/저널
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://github.com/PQClean/PQClean" target="_blank" rel="noopener noreferrer">PQClean — 구현 참고 (GitHub)
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
             </div>
         </article>
 
@@ -48,17 +89,6 @@
                     <li>정적/동적 분석 워크플로우(Disassembly, Decompilation, Debugging)</li>
                     <li>취약점 탐지 및 익스플로잇 원리 이해</li>
                 </ul>
-                <div class="topic-resources">
-                    <a href="https://www.sourceware.org/gdb/" target="_blank" rel="noopener noreferrer">GDB — GNU 디버거
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://github.com/pwndbg/pwndbg" target="_blank" rel="noopener noreferrer">Pwndbg — GDB 확장 (pwndbg)
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://www.hex-rays.com/products/ida/" target="_blank" rel="noopener noreferrer">IDA Pro — 상용 수단
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
             </div>
         </article>
 
@@ -71,17 +101,6 @@
                     <li>펌웨어 분석 및 보안(바이너리/플래시 분석, OTA 보안)</li>
                     <li>MCU 프로그래밍 및 하드웨어 인터페이스(SPI, I2C, UART)</li>
                 </ul>
-                <div class="topic-resources">
-                    <a href="https://www.st.com/" target="_blank" rel="noopener noreferrer">STMicroelectronics — 제품/문서
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://www.raspberrypi.org/" target="_blank" rel="noopener noreferrer">Raspberry Pi — SBC와 커뮤니티 자료
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="https://www.arduino.cc/" target="_blank" rel="noopener noreferrer">Arduino — 프로토타입 플랫폼
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#0b63d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                </div>
             </div>
         </article>
     </div>
