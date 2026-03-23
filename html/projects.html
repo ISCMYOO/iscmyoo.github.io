@@ -35,6 +35,35 @@
         .work-summary + .work-bullets {
             margin-top: 0.6rem;
         }
+
+        /* projects.html only: make .paper-meta wrap nicely on small screens
+           and add vertical spacing between wrapped rows so lines aren't cramped */
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 0.8rem; /* row-gap column-gap: increased row-gap for breathing room */
+            margin-bottom: 0.8rem; /* breathing room before following content */
+        }
+
+        /* slightly reduce vertical density for items inside .paper-meta */
+        .paper-meta > * {
+            margin: 0;
+            line-height: 1.25;
+        }
+
+        /* ensure action links (posters/github) remain visually separated on wrap */
+        .paper-action {
+            white-space: nowrap; /* keep action label with its icon */
+        }
+
+        /* mobile tweak: if meta wraps to more lines, increase vertical spacing a bit more */
+        @media (max-width: 480px) {
+            .paper-meta {
+                gap: 0.8rem 0.6rem;
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
